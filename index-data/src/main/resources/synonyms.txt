@@ -9,3 +9,5 @@ without|sine
 sine|without
 disease|disorder
 disorder|disease
+hereditary|congenital
+congenital|hereditary

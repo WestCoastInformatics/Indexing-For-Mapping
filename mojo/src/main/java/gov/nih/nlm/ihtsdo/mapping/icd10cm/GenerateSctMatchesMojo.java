@@ -78,7 +78,7 @@ public class GenerateSctMatchesMojo extends AbstractMojo {
       getLog().info("  indexDir = " + indexDir);
       getLog().info("  outputFile = " + outputFile);
       getLog().info("  scoreThreshold = " + scoreThreshold);
-      
+
       IndexReader indexReader = null;
       IndexSearcher indexSearcher = null;
       Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_43);
@@ -91,7 +91,7 @@ public class GenerateSctMatchesMojo extends AbstractMojo {
           new BufferedReader(new FileReader(new File(inputFile)));
       new File(outputFile).getParentFile().mkdirs();
       PrintWriter out = new PrintWriter(new FileWriter(new File(outputFile)));
-      
+
       String prevSctid = "";
       Map<String, Float> codeScoreMap = new HashMap<>();
       String line;
@@ -108,9 +108,12 @@ public class GenerateSctMatchesMojo extends AbstractMojo {
         description = description.replaceAll(" not ", "");
         description = description.replaceAll(" AND/OR ", "");
         description = description.replaceAll(" and/or ", "");
-        description = description.replaceAll("[})({?+^/:*\"']", " ");
+        description = description.replaceAll("[-})({?+^/:*\"']", " ");
         description = description.replaceAll("\\[", " ");
         description = description.replaceAll("\\]", " ");
+        if (description.endsWith(" OR")) {
+          description = description.replaceAll(" OR", "");
+        }
 
         if (!sctid.equals(prevSctid)) {
           if (sctid.compareTo(prevSctid) < 0) {
@@ -126,17 +129,14 @@ public class GenerateSctMatchesMojo extends AbstractMojo {
           codeScoreMap = new HashMap<>();
         }
         prevSctid = sctid;
-        
-        //System.out.println("desc = " + description);
-        description = description.replace('-', ' ');
-        description = description.replaceAll(" OR", " ");
+
+        // System.out.println("desc = " + description);
         Query query =
             new QueryParser(Version.LUCENE_43, "text", analyzer)
                 .parse(description);
 
-
-        //System.out.println("sctid = " + sctid);
-        //System.out.println("  query = " + query.toString());
+        // System.out.println("sctid = " + sctid);
+        // System.out.println("  query = " + query.toString());
         int numResults = 20;
         ScoreDoc[] hits = indexSearcher.search(query, numResults).scoreDocs;
         for (int i = 0; i < hits.length; i++) {
@@ -144,24 +144,24 @@ public class GenerateSctMatchesMojo extends AbstractMojo {
           IndexableField code = doc.getField("code");
           String result = code.stringValue();
           if (codeScoreMap.containsKey(result)) {
-             if (codeScoreMap.get(result) < hits[i].score) {
-               codeScoreMap.put(result,  hits[i].score);
-             } 
+            if (codeScoreMap.get(result) < hits[i].score) {
+              codeScoreMap.put(result, hits[i].score);
+            }
           } else {
             if (hits[i].score > scoreThreshold) {
-              codeScoreMap.put(result,  hits[i].score);
+              codeScoreMap.put(result, hits[i].score);
             }
           }
         }
       }
-      
+
       analyzer.close();
       in.close();
       dir.close();
       out.close();
 
       getLog().info("Finished SCT matching ..." + new Date());
-      
+
     } catch (Exception e) {
       e.printStackTrace();
       throw new MojoExecutionException("Generation of SCT matches failed", e);
