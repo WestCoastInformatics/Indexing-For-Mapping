@@ -1,0 +1,133 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- Module metadata -->
+  <parent>
+    <groupId>com.wcinformatics.mapping</groupId>
+    <artifactId>icd10-index-parent</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <relativePath>../parent</relativePath>
+  </parent>
+  <artifactId>icd10-index-lucene</artifactId>
+  <packaging>pom</packaging>
+  <name>ICD10 Index - Lucene</name>
+  <description>ICD10 Index - Convert to lucene indexes</description>
+
+  <!-- Dependencies -->
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-plugin-api</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>icd10-index-data</artifactId>
+      <version>${project.version}</version>
+      <type>zip</type>
+    </dependency>
+  </dependencies>
+
+  <!-- Convert index files to HTML and lucene indexes and package -->
+  <build>
+    <plugins>
+
+      <!-- Unpack the index data -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>unpack-shared-resources</id>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+            <phase>generate-resources</phase>
+            <configuration>
+              <outputDirectory>target/input</outputDirectory>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>${project.groupId}</groupId>
+                  <artifactId>icd10-index-data</artifactId>
+                  <type>zip</type>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- Apply mojo to unpacked .xml file <plugin> <groupId>com.wcinformatics.mapping</groupId> 
+        <artifactId>icd10-index-mojo</artifactId> <executions> <execution> <id>execution1</id> 
+        <phase>compile</phase> <configuration> <synonymFile>${project.basedir}/target/input/synonyms.txt</synonymFile> 
+        <inputFile>${project.basedir}/target/input/icd10.txt</inputFile> <indexDir>${project.basedir}/target/icd10/indexes</indexDir> 
+        </configuration> <goals> <goal>index</goal> </goals> </execution> <execution> <id>execution2</id> 
+        <phase>compile</phase> <configuration> <synonymFile>${project.basedir}/target/input/synonyms.txt</synonymFile> 
+        <inputFile>${project.basedir}/target/input/icd10cm.txt</inputFile> <indexDir>${project.basedir}/target/icd10cm/indexes</indexDir> 
+        </configuration> <goals> <goal>index</goal> </goals> </execution> <execution> <id>execution3</id> 
+        <phase>compile</phase> <configuration> <inputFile>${project.basedir}/target/input/desc.txt</inputFile> 
+        <indexDir>${project.basedir}/target/icd10/indexes</indexDir> <outputFile>${project.basedir}/target/output/icd10Matches.txt</outputFile> 
+        <scoreThreshold>0</scoreThreshold> </configuration> <goals> <goal>lookup</goal> </goals> 
+        </execution> <execution> <id>execution4</id> <phase>compile</phase> <configuration> 
+        <inputFile>${project.basedir}/target/input/desc.txt</inputFile> <indexDir>${project.basedir}/target/icd10cm/indexes</indexDir> 
+        <outputFile>${project.basedir}/target/output/icd10cmMatches.txt</outputFile> <scoreThreshold>0</scoreThreshold> 
+        </configuration> <goals> <goal>lookup</goal> </goals> </execution> </executions> 
+        </plugin> -->
+
+      <!-- Apply mojo to unpacked .xml file -->
+      <plugin>
+        <groupId>com.wcinformatics.mapping</groupId>
+        <artifactId>icd10-index-mojo</artifactId>
+        <executions>
+          <execution>
+            <id>execution1</id>
+            <phase>compile</phase>
+            <configuration>
+              <synonymFile>${project.basedir}/target/input/synonyms.txt</synonymFile>
+              <inputFile>${project.basedir}/target/input/desc.txt</inputFile>
+              <indexDir>${project.basedir}/target/orpha/indexes</indexDir>
+            </configuration>
+            <goals>
+              <goal>index</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>execution3</id>
+            <phase>compile</phase>
+            <configuration>
+              <inputFile>${project.basedir}/target/input/orpha.txt</inputFile>
+              <indexDir>${project.basedir}/target/orpha/indexes</indexDir>
+              <outputFile>${project.basedir}/target/output/orphaNetMatches.txt</outputFile>
+              <scoreThreshold>1</scoreThreshold>
+            </configuration>
+            <goals>
+              <goal>lookup</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- Assemble final .zip file -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>package-artifact</id>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <phase>package</phase>
+            <configuration>
+              <descriptors>
+                <descriptor>src/main/assembly/resources.xml</descriptor>
+              </descriptors>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

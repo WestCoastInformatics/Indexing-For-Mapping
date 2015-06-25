@@ -1,0 +1,11 @@
+poisoning|adverse reaction to
+sequelae|late effects of
+prosthetic devices|prosthetics
+bipolar affective disorder|bipolar disorder
+abrasion|friction burn
+deformity|anomaly
+congenital malformation|aberrant
+without|sine
+sine|without
+disease|disorder
+disorder|disease
