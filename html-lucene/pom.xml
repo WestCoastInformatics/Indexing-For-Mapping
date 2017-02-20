@@ -85,24 +85,24 @@
             <phase>compile</phase>
             <configuration>
               <synonymFile>${project.basedir}/target/input/synonyms.txt</synonymFile>
-              <inputFile>${project.basedir}/target/input/desc.txt</inputFile>
-              <indexDir>${project.basedir}/target/orpha/indexes</indexDir>
+              <inputFile>${project.basedir}/target/input/icd11clean.txt</inputFile>
+              <indexDir>${project.basedir}/target/icd11/indexes</indexDir>
             </configuration>
             <goals>
-              <goal>index</goal>
+              <goal>index-icd11</goal>
             </goals>
           </execution>
           <execution>
-            <id>execution3</id>
+            <id>execution2</id>
             <phase>compile</phase>
             <configuration>
-              <inputFile>${project.basedir}/target/input/orpha.txt</inputFile>
-              <indexDir>${project.basedir}/target/orpha/indexes</indexDir>
-              <outputFile>${project.basedir}/target/output/orphaNetMatches.txt</outputFile>
-              <scoreThreshold>1</scoreThreshold>
+              <inputFile>${project.basedir}/target/input/desc.txt</inputFile>
+              <indexDir>${project.basedir}/target/icd11/indexes</indexDir>
+              <outputFile>${project.basedir}/target/output/sctIcd11Matches.txt</outputFile>
+              <scoreThreshold>3</scoreThreshold>
             </configuration>
             <goals>
-              <goal>lookup</goal>
+              <goal>lookup-icd11</goal>
             </goals>
           </execution>
         </executions>

@@ -1,13 +1,14 @@
-poisoning|adverse reaction to
-sequelae|late effects of
-prosthetic devices|prosthetics
-bipolar affective disorder|bipolar disorder
-abrasion|friction burn
-deformity|anomaly
-congenital malformation|aberrant
-without|sine
-sine|without
-disease|disorder
-disorder|disease
-hereditary|congenital
-congenital|hereditary
+# icd -> snomed (the standard ones from ICD10 don't seem to apply
+#sequelae|late effects of
+#poisoning|adverse reaction to
+#prosthetic devices|prosthetics
+#bipolar affective disorder|bipolar disorder
+#abrasion|friction burn
+#deformity|anomaly
+#congenital malformation|aberrant
+#without|sine
+#sine|without
+#disease|disorder
+#disorder|disease
+#hereditary|congenital
+#congenital|hereditary
