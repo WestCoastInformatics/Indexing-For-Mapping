@@ -167,13 +167,15 @@ public class LookupIcd11MatchesMojo extends AbstractMojo {
           final int ctDiff = Math.abs(descWords - textWords);
 
           // Penalize difference in words unless it is an "other" case
-          if (ctDiff > 1 && !type.stringValue().equals("other")) {
+          if (ctDiff > 1 && !result.endsWith("other")
+              && !type.stringValue().toLowerCase().contains("other")) {
             score *= (1.5f / ctDiff);
           }
 
           // if "unspecified", penalize difference in words more
-          if (type.stringValue().equals("unspecified")
-              || type.stringValue().equals("NOS")) {
+          if (result.endsWith("unspecified")
+              || type.stringValue().toLowerCase().contains("nos")
+              || type.stringValue().toLowerCase().contains("unspecified")) {
             if (descWords - textWords > 0) {
               score = score * .75f;
             }
