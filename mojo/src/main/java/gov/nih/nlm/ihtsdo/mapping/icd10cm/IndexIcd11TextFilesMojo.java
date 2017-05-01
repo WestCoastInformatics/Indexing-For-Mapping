@@ -102,7 +102,6 @@ public class IndexIcd11TextFilesMojo extends AbstractMojo {
         if (line.startsWith("#")) {
           continue;
         }
-
         final String[] tokens = line.split("\\|");
         final String code = tokens[0];
         String text = tokens[1];
