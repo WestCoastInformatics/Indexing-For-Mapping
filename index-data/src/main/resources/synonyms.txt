@@ -12,3 +12,9 @@
 #disorder|disease
 #hereditary|congenital
 #congenital|hereditary
+i|1
+ii|2
+1|i
+2|i
+iii|3
+3|iii

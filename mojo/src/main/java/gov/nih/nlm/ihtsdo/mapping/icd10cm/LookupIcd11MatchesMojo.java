@@ -175,6 +175,7 @@ public class LookupIcd11MatchesMojo extends AbstractMojo {
           // if "unspecified", penalize difference in words more
           if (result.endsWith("unspecified")
               || type.stringValue().toLowerCase().contains("nos")
+              || type.stringValue().toLowerCase().contains("not otherwise specified")
               || type.stringValue().toLowerCase().contains("unspecified")) {
             if (descWords - textWords > 0) {
               score = score * .75f;
