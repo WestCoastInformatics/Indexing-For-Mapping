@@ -1,3 +1,6 @@
+/*
+ *    Copyright 2017 West Coast Informatics, LLC
+ */
 package gov.nih.nlm.ihtsdo.mapping.icd10cm;
 
 import java.io.BufferedReader;
@@ -154,8 +157,7 @@ public class LookupIcd11MatchesMojo extends AbstractMojo {
 
           // Bump exact matches and "preferred" matches
           Float score = hits[i].score;
-          if (text.stringValue().toLowerCase()
-              .equals(description.toLowerCase())) {
+          if (normalize(text.stringValue()).equals(normalize(description))) {
             score = 10.0f;
           }
           if (descType.equals("1")) {
@@ -169,17 +171,29 @@ public class LookupIcd11MatchesMojo extends AbstractMojo {
           // Penalize difference in words unless it is an "other" case
           if (ctDiff > 1 && !result.endsWith("other")
               && !type.stringValue().toLowerCase().contains("other")) {
-            score *= (1.5f / ctDiff);
+            score *= (1.8f / ctDiff);
           }
 
-          // if "unspecified", penalize difference in words more
+          // if "unspecified",
           if (result.endsWith("unspecified")
               || type.stringValue().toLowerCase().contains("nos")
-              || type.stringValue().toLowerCase().contains("not otherwise specified")
+              || type.stringValue().toLowerCase()
+                  .contains("not otherwise specified")
               || type.stringValue().toLowerCase().contains("unspecified")) {
-            if (descWords - textWords > 0) {
-              score = score * .75f;
+            // If description is "unspecified", boost
+            if (description.toLowerCase().contains("unspecified")) {
+              score = score * 1.25f;
             }
+            // penalize difference in words more
+            else if (descWords - textWords > 0) {
+              score = score * .85f;
+            }
+          }
+
+          // Boosts for matching words
+          if (description.toLowerCase().contains("remission")
+              && text.stringValue().toLowerCase().contains("remission")) {
+            score = score * 1.5f;
           }
 
           if (codeScoreMap.containsKey(result)) {
@@ -212,4 +226,28 @@ public class LookupIcd11MatchesMojo extends AbstractMojo {
 
   }
 
+  /**
+   * Normalize.
+   *
+   * @param text the text
+   * @return the string
+   */
+  @SuppressWarnings("static-method")
+  private String normalize(String text) {
+    // Lowercase
+    String result = text.toLowerCase();
+
+    // Remove "unspecified"
+    result = result.replaceAll(", unspecified", "");
+    result = result.replaceAll(" unspecified", "");
+    result = result.replaceAll("^unspecified", "");
+
+    // Dup spaces
+    result = result.replaceAll(" +", " ");
+
+    // Starting or ending punctuation
+    result = result.replaceAll("^\\W+", "");
+    result = result.replaceAll("\\W+$", "");
+    return result;
+  }
 }

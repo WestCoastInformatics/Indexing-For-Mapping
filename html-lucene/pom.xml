@@ -99,7 +99,7 @@
               <inputFile>${project.basedir}/target/input/desc.txt</inputFile>
               <indexDir>${project.basedir}/target/icd11/indexes</indexDir>
               <outputFile>${project.basedir}/target/output/sctIcd11Matches.txt</outputFile>
-              <scoreThreshold>3</scoreThreshold>
+              <scoreThreshold>1</scoreThreshold>
             </configuration>
             <goals>
               <goal>lookup-icd11</goal>

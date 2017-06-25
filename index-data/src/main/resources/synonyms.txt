@@ -12,9 +12,19 @@
 #disorder|disease
 #hereditary|congenital
 #congenital|hereditary
+due to|caused by
+disease|disorder
+haemoglobin|hemoglobin
+infection|infectious disease
 i|1
 ii|2
 1|i
 2|i
 iii|3
 3|iii
+associated with pregnancy, childbirth, or the pueperium|postpartum
+mental disorders|psychosis
+pshychoactive substance dependence|drug dependence
+depressive disorder|depression
+major|severe
+severe|major
