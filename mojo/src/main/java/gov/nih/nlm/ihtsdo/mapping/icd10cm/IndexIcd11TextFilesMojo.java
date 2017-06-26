@@ -111,15 +111,23 @@ public class IndexIcd11TextFilesMojo extends AbstractMojo {
         }
         addDocumentToIndex(code, text, type, writer);
         // do all replacements then check
+//        if (text.equals("psychoactive substance dependence")) {
+//          System.out.println("breakpoint");
+//        }
         boolean found = false;
+        String fullReplText = new String(text);
         for (String key : syReplacements.keySet()) {
           if (text.toLowerCase().contains(key)) {
+            final String localText =
+                text.toLowerCase().replace(key, syReplacements.get(key));
+            fullReplText = fullReplText.toLowerCase().replace(key,
+                syReplacements.get(key));
+            addDocumentToIndex(code, localText, type, writer);
             found = true;
-            text = text.toLowerCase().replace(key, syReplacements.get(key));
           }
         }
         if (found) {
-          addDocumentToIndex(code, text, type, writer);
+          addDocumentToIndex(code, fullReplText, type, writer);
         }
       }
       // close Lucene index

@@ -16,15 +16,21 @@ due to|caused by
 disease|disorder
 haemoglobin|hemoglobin
 infection|infectious disease
-i|1
-ii|2
-1|i
-2|i
-iii|3
-3|iii
-associated with pregnancy, childbirth, or the pueperium|postpartum
-mental disorders|psychosis
-pshychoactive substance dependence|drug dependence
+ i | 1
+ ii | 2
+ 1 | i
+ 2 |i
+ iii | 3
+ 3 | iii
+associated with pregnancy, childbirth and the puerperium|postpartum
+postpartum|associated with pregnancy, childbirth and the puerperium
+psychotic symptoms|psychosis
+psychosis|psychotic symptoms
+psychoactive substance dependence|drug dependence
+drug dependence|psychoactive substance dependence
 depressive disorder|depression
+depression|depressive disorder
 major|severe
 severe|major
+colon|large intestine
+large intestine|colon

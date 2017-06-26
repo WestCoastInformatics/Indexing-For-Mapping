@@ -62,7 +62,7 @@ public class LookupIcd11MatchesMojo extends AbstractMojo {
    * 
    * @parameter
    */
-  private long scoreThreshold;
+  private double scoreThreshold;
 
   /**
    * Executes the plugin.
