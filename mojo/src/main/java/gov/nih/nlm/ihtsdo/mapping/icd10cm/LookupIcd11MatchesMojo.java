@@ -158,7 +158,13 @@ public class LookupIcd11MatchesMojo extends AbstractMojo {
           // Bump exact matches and "preferred" matches
           Float score = hits[i].score;
           if (normalize(text.stringValue()).equals(normalize(description))) {
-            score = 10.0f;
+            // if it is "other" with an exact string match, demote slightly
+            if (result.endsWith("other")
+                | type.stringValue().toLowerCase().contains("other")) {
+              score = 9.0f;
+            } else {
+              score = 10.0f;
+            }
           }
           if (descType.equals("1")) {
             score *= 1.25f;
@@ -177,6 +183,7 @@ public class LookupIcd11MatchesMojo extends AbstractMojo {
           // if "unspecified",
           if (result.endsWith("unspecified")
               || type.stringValue().toLowerCase().contains("nos")
+              || type.stringValue().toLowerCase().contains("nec")
               || type.stringValue().toLowerCase()
                   .contains("not otherwise specified")
               || type.stringValue().toLowerCase().contains("unspecified")) {

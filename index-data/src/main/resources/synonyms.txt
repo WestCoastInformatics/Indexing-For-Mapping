@@ -8,12 +8,11 @@
 #congenital malformation|aberrant
 #without|sine
 #sine|without
-#disease|disorder
-#disorder|disease
 #hereditary|congenital
 #congenital|hereditary
 due to|caused by
 disease|disorder
+disorder|disease
 haemoglobin|hemoglobin
 infection|infectious disease
  i | 1
@@ -34,3 +33,12 @@ major|severe
 severe|major
 colon|large intestine
 large intestine|colon
+uncertain|uncertain nature
+uncertain nature|uncertain
+deafness|hearing impairment
+hearing impairment|deafness
+eardrum|tympanic membrane
+tympanic membrane|eardrum
+labyrinthitis|otitis interna
+otitis interna|labyrinthitis
+acute|acute-on-chronic
