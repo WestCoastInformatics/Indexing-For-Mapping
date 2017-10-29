@@ -42,3 +42,7 @@ tympanic membrane|eardrum
 labyrinthitis|otitis interna
 otitis interna|labyrinthitis
 acute|acute-on-chronic
+spine|spinal
+spinal|spine
+deformity|deformities
+deformities|deformity
