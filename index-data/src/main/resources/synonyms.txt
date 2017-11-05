@@ -18,7 +18,7 @@ infection|infectious disease
  i | 1
  ii | 2
  1 | i
- 2 |i
+ 2 | ii
  iii | 3
  3 | iii
 associated with pregnancy, childbirth and the puerperium|postpartum
@@ -46,3 +46,193 @@ spine|spinal
 spinal|spine
 deformity|deformities
 deformities|deformity
+abdomen|abdominal
+abdominal|abdomen
+alimentary tract|digestive tract
+amnion|amniotic
+amniotic|amnion
+aorta|aortic
+aortic|aorta
+arm|upper limb
+arterial|artery
+artery|arterial
+articular|joint
+articular|joints
+atrial|atrium
+atrium|atrial
+axilla|axillary
+axillary|axilla
+bowel|intestine
+brain stem|brainstem
+brainstem|brain stem
+bronchial|bronchus
+bronchus|bronchial
+cardiac|heart
+cerebellar|cerebellum
+cerebellum|cerebellar
+cerebral|cerebrum
+cerebrum|cerebral
+cervical|neck
+chest|thorax
+clavicle|clavicular
+clavicular|clavicle
+clitoral|clitoris
+clitoris|clitoral
+cochlea|cochlear
+cochlear|cochlea
+conjunctiva|conjunctival
+conjunctival|conjunctiva
+cornea|corneal
+corneal|cornea
+cranial|cranium
+cranium|cranial
+diaper area|napkin area
+digestive tract|alimentary tract
+digit|digital
+digital|digit
+duodenal|duodenum
+duodenum|duodenal
+endocardial|endocardium
+endocardium|endocardial
+endocervical|endocervix
+endocervix|endocervical
+endometrial|endometrium
+endometrium|endometrial
+epicardial|epicardium
+epicardium|epicardial
+epithelial|epithelium
+epithelium|epithelial
+esophageal|esophagus
+esophagus|esophageal
+exocervical|exocervix
+exocervix|exocervical
+extremety|limb
+eye|eyes
+eye|ocular
+eyes|eye
+face|facial
+facial|face
+fascia|fascial
+fascial|fascia
+feet|foot
+fetal|fetus
+fetus|fetal
+finger|fingers
+fingers|finger
+foot|feet
+gastric|stomach
+gastrointestinal|gastrointestine
+gastrointestine|gastrointestinal
+gonad|gonadal
+gonadal|gonad
+groin|inguinal region
+hand|hands
+hands|hand
+heart|cardiac
+hepatic|liver
+hypopharyngeal|hypopharynx
+hypopharynx|hypopharyngeal
+ileal|ileum
+ileum|ileal
+inguinal region|groin
+integument|integumentary
+integumentary|integument
+intestinal|intestine
+intestine|bowel
+intestine|intestinal
+jejunal|jejunum
+jejunum|jejunal
+joint|articular
+joints|articular
+kidney|renal
+laryngeal|larynx
+larynx|laryngeal
+leg|lower limb
+limb|extremety
+liver|hepatic
+lower limb|leg
+lung|lungs
+lungs|lung
+mandible|mandibular
+mandibular|mandible
+maxilla|maxillary
+maxillary|maxilla
+mediastinal|mediastinum
+mediastinum|mediastinal
+mesencephalon|midbrain
+mesentery colon|mesocolon
+mesocolon|mesentery colon
+metatarsal|metatarsus
+metatarsus|metatarsal
+midbrain|mesencephalon
+muscle|muscular
+muscular|muscle
+myocardial|myocardium
+myocardium|myocardial
+napkin area|diaper area
+neck|cervical
+ocular|eye
+oropharyngeal|oropharynx
+oropharynx|oropharyngeal
+ovaries|ovary
+ovary|ovaries
+palatal|palate
+palate|palatal
+pancreas|pancreatic
+pancreatic|pancreas
+pelvic|pelvis
+pelvis|pelvic
+penile|penis
+penis|penile
+pericardial|pericardium
+pericardium|pericardial
+perineal|perineum
+perineum|perineal
+pharyngeal|pharynx
+pharynx|pharyngeal
+placenta|placental
+placental|placenta
+prostate|prostatic
+prostatic|prostate
+rectal|rectum
+rectum|rectal
+renal|kidney
+sacral|sacrum
+sacrum|sacral
+scrotal|scrotum
+scrotum|scrotal
+skeletal|skeleton
+skeleton|skeletal
+stomach|gastric
+teeth|tooth
+testicle|testicular
+testicular|testicle
+thoracic|thorax
+thorax|chest
+thorax|thoracic
+tibia|tibial
+tibial|tibia
+toe|toes
+toes|toe
+tonsil|tonsillar
+tonsillar|tonsil
+tooth|teeth
+trachea|tracheal
+tracheal|trachea
+umblical|umblicus
+umblicus|umblical
+upper limb|arm
+ureter|ureteral
+ureteral|ureter
+urethra|urethral
+urethral|urethra
+uterine|uterus
+uterus|uterine
+vagina|vaginal
+vaginal|vagina
+vein|venous
+venous|vein
+ventricle|ventricular
+ventricular|ventricle
+zygoma|zygomatic
+zygomatic|zygoma
