@@ -13,6 +13,8 @@
 due to|caused by
 disease|disorder
 disorder|disease
+diseases|disorder
+disorder|diseases
 haemoglobin|hemoglobin
 infection|infectious disease
  i | 1
@@ -236,3 +238,21 @@ ventricle|ventricular
 ventricular|ventricle
 zygoma|zygomatic
 zygomatic|zygoma
+shoulder|shoulder region
+shoulder region|shoulder
+lymph node|lymph gland
+lymph gland|lymph node
+ovary|ovarian
+ovarian|ovary
+lumbar spine|lumbar vertebra
+lumbar vertebra|lumbar spine
+vocal cord|vocal cords
+vocal cords|vocal cord
+uterine cervix|cervix uteri
+cervix uteri|uterine cervix
+injury|injuries
+injuries|injury
+infective|infectious
+infectious|infective
+orbit|orbital
+orbital|orbit
