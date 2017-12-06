@@ -126,9 +126,18 @@ public class LookupIcd11MatchesMojo extends AbstractMojo {
             throw new Exception("desc.txt is not in order");
           }
           getLog().info("sctid = " + prevSctid + ", " + codeScoreMap);
+          final Map<String,Float> maxScore = new HashMap<>();
           for (String key : codeScoreMap.keySet()) {
             float score = codeScoreMap.get(key);
-            if (score > scoreThreshold) {
+            if (!maxScore.containsKey(prevSctid+key)) {
+              maxScore.put(prevSctid+key, score);
+            } else if (score > maxScore.get(prevSctid+key)) {
+              maxScore.put(prevSctid+key, score);
+            }
+          }
+          for (String key : codeScoreMap.keySet()) {
+            float score = codeScoreMap.get(key);
+            if (score > scoreThreshold && score == maxScore.get(prevSctid+key)) {
               out.println(prevSctid + "|" + key + "|" + score + "|"
                   + codeDescMap.get(key) + "|" + codeTextMap.get(key));
             }
@@ -195,12 +204,6 @@ public class LookupIcd11MatchesMojo extends AbstractMojo {
             else if (descWords - textWords > 0) {
               score = score * .85f;
             }
-          }
-
-          // Boosts for matching words
-          if (description.toLowerCase().contains("remission")
-              && text.stringValue().toLowerCase().contains("remission")) {
-            score = score * 1.5f;
           }
 
           if (codeScoreMap.containsKey(result)) {
